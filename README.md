@@ -1,6 +1,6 @@
 # **Expense Tracker Application**
 
-An **Expense Tracker Application** that allows users to manage their financial expenses efficiently. This application is built with an Angular-based frontend and an ASP.NET Core backend. The backend uses Entity Framework Core for database operations, and authentication is implemented using **BCrypt** for password hashing.
+An **Expense Tracker Application** that allows users to manage their financial expenses efficiently. This application is built with an Angular-based frontend and an ASP.NET Core backend.
 
 ---
 
@@ -59,13 +59,35 @@ An **Expense Tracker Application** that allows users to manage their financial e
 1. **Prerequisites**:
    - Install  Node.js.
    - Install Angular CLI globally:
+     ```bash
+     npm install -g @angular/cli@18.0.0
 
-2. **Configure Database**:
-   - Open the `appsettings.json` file located in the backend project directory.
-   - Update the connection string to match your database configuration.
-
-3. **Run Migrations**:
+2. **Navigate to Frontend Directory**:
    ```bash
-   dotnet ef migrations add InitialCreate
-   dotnet ef database update
+   cd Expense_Tracker_app/Expense_Tracker_app_Frontend
+
+3. **Install Dependencies**:
+   ```bash
+   npm install
+3. **Run the Frontend**:
+   - The Angular application should be running at http://localhost:4200.
+     ```bash
+     ng serve
+## **API Endpoints**
+
+### **Authentication**
+
+| Method | Endpoint         | Description        | Request Body                                                                     |
+|--------|------------------|--------------------|---------------------------------------------------------------------------------|
+| POST   | `/api/auth/signup` | User registration  | `{ "username": "string", "email": "string", "password": "string" }`              |
+| POST   | `/api/auth/login`  | User login         | `{ "username": "string", "password": "string" }`                                 |
+
+### **Planned Expense Management**
+
+| Method | Endpoint             | Description             |
+|--------|----------------------|-------------------------|
+| GET    | `/api/expenses`       | Fetch all expenses      |
+| POST   | `/api/expenses`       | Add a new expense       |
+| PUT    | `/api/expenses/{id}`  | Update an existing expense |
+| DELETE | `/api/expenses/{id}`  | Delete an expense       |
      
