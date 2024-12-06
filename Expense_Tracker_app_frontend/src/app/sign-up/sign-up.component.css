@@ -1,0 +1,82 @@
+/* Overall Container */
+.signup-container {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    height: 100vh;            /* Full viewport height */
+    background-color: #f3f4f6; /* Light background color */
+  }
+  
+  /* Card Container */
+  .signup-card {
+    background-color: #fff;          /* White background for the card */
+    padding: 30px 40px;              /* Padding inside the card */
+    border-radius: 10px;             /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 400px;                /* Limit max width of the form */
+  }
+  
+  /* Title Style */
+  .signup-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Sign Up Button */
+  .btn-signup {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-signup:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link to Login page */
+  .login-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .login-link a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,93 @@
+<div class="container-fluid">
+    <p-toolbar styleClass="p-3 sticky-top">
+        <div class="p-toolbar-group-start">
+            <!-- Add content here if needed -->
+        </div>
+        <div class="p-toolbar-group-center">
+            <h1>Welcome to the Expense Tracker app</h1>
+        </div>
+        <div class="p-toolbar-group-end">
+            <p-avatar icon="pi pi-user" styleClass="mr-2" size="large" shape="circle" (click)="menu.toggle($event)" />
+            <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        </div>
+    </p-toolbar>
+
+    <!-- Main content wrapper (Flexbox) -->
+    <div class="row">
+        <!-- Left side div for entering amount -->
+        <div class="col-md-6">
+            <div class="card card-left">
+                <h6 class="card-title">Add/Update Amount</h6>
+                <p-divider></p-divider>
+
+                <div class="amount-form">
+                    <input type="number" [(ngModel)]="amount" placeholder="Enter amount" class="form-input" />
+                    <button (click)="addAmount()" class="btn-primary">Add</button>
+                </div>
+
+                <div *ngIf="totalAmount > 0" class="total-amount">
+                    <p class="font-weight-bold">Total: {{ totalAmount | currency:'USD' }}</p>
+                </div>
+                <!-- Budget alert -->
+                <div *ngIf="Expenses > totalAmount" class="alert alert-danger mt-3">
+                    <strong>Warning!</strong> You've exceeded your budget limit.
+                </div>
+            </div>
+
+            <!-- Progress bar below -->
+            <div class="progress-container">
+                <label for="budget-progress">Progrès du Budget</label>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" [style.width.%]="getProgressPercentage()">
+                    </div> <!-- Dynamically adjust width -->
+                </div>
+                <span>{{ Expenses }} $ / {{ totalAmount }} $</span> <!-- Show the total amount spent -->
+            </div>
+            <div class="card flex justify-content-center">
+                <p-chart type="pie" [data]="chartData" [options]="chartOptions"></p-chart>
+            </div>            
+        </div>
+
+        <!-- Right side div for entering expenses -->
+        <div class="col-md-6">
+            <div class="card card-right">
+                <h6 class="card-title">Add/Update Expense</h6>
+                <p-divider></p-divider>
+
+                <div class="expense-form">
+                    <input type="text" [(ngModel)]="expense.description" placeholder="Description" class="form-input" />
+                    <input type="text" [(ngModel)]="expense.category" placeholder="Category" class="form-input" />
+                    <input type="number" [(ngModel)]="expense.amount" placeholder="Amount" class="form-input" />
+                    <input type="date" [(ngModel)]="expense.date" placeholder="Date" class="form-input" />
+                    <button (click)="addExpense()" class="btn-primary">Add Expense</button>
+                </div>
+
+            </div>
+
+            <!-- List of Expenses -->
+            <div *ngIf="expenses.length > 0">
+                <h6>Expense List</h6>
+                <p-table [value]="expenses">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-expense>
+                        <tr>
+                            <td>{{ expense.description }}</td>
+                            <td>{{ expense.category }}</td>
+                            <td>{{ expense.amount | currency:'USD' }}</td>
+                            <td>{{ expense.date | date }}</td>
+                            <td><button (click)="deleteExpense(expense)" class="btn-delete">Delete</button></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
