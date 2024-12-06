@@ -73,6 +73,7 @@ An **Expense Tracker Application** that allows users to manage their financial e
    - The Angular application should be running at http://localhost:4200.
      ```bash
      ng serve
+---
 ## **API Endpoints**
 
 ### **Authentication**
@@ -88,6 +89,5 @@ An **Expense Tracker Application** that allows users to manage their financial e
 |--------|----------------------|-------------------------|
 | GET    | `/api/expenses`       | Fetch all expenses      |
 | POST   | `/api/expenses`       | Add a new expense       |
-| PUT    | `/api/expenses/{id}`  | Update an existing expense |
 | DELETE | `/api/expenses/{id}`  | Delete an expense       |
      
